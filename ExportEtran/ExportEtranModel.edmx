@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ExportEtranModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ExportEtranModelStoreContainer">
+          <EntitySet Name="tbl_Bill" EntityType="ExportEtranModel.Store.tbl_Bill" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_BillCar" EntityType="ExportEtranModel.Store.tbl_BillCar" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_ConfRef" EntityType="ExportEtranModel.Store.tbl_ConfRef" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vw_ConfRef" EntityType="ExportEtranModel.Store.vw_ConfRef" store:Type="Views" store:Schema="dbo" store:Name="vw_ConfRef">
+            <DefiningQuery>SELECT 
+      [vw_ConfRef].[ConfRef_ID] AS [ConfRef_ID], 
+      [vw_ConfRef].[SrcTable] AS [SrcTable], 
+      [vw_ConfRef].[SrcField] AS [SrcField], 
+      [vw_ConfRef].[DstTable] AS [DstTable], 
+      [vw_ConfRef].[DstField] AS [DstField], 
+      [vw_ConfRef].[ParentTable] AS [ParentTable], 
+      [vw_ConfRef].[IdField] AS [IdField], 
+      [vw_ConfRef].[UpdateField] AS [UpdateField], 
+      [vw_ConfRef].[ActualField] AS [ActualField], 
+      [vw_ConfRef].[CostName2_ID] AS [CostName2_ID], 
+      [vw_ConfRef].[CostName] AS [CostName]
+      FROM [dbo].[vw_ConfRef] AS [vw_ConfRef]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tbl_BillCar_tbl_Bill" Association="ExportEtranModel.Store.FK_tbl_BillCar_tbl_Bill">
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+            <End Role="tbl_BillCar" EntitySet="tbl_BillCar" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Bill">
+          <Key>
+            <PropertyRef Name="Bill_ID" />
+          </Key>
+          <Property Name="Bill_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EtranBillID" Type="int" />
+          <Property Name="CarQtty" Type="int" />
+          <Property Name="BillNum" Type="nvarchar" MaxLength="255" />
+          <Property Name="BillState" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="TakeOverDate" Type="datetime" />
+          <Property Name="OpenDate" Type="datetime" />
+          <Property Name="ArrivDate" Type="datetime" />
+          <Property Name="RaskrDate" Type="datetime" />
+          <Property Name="DeliveryDate" Type="datetime" />
+          <Property Name="RgdOderNum" Type="int" />
+          <Property Name="EtranOderID" Type="int" />
+          <Property Name="ConsignorTGNL" Type="int" />
+          <Property Name="ConsignorOKPO" Type="int" />
+          <Property Name="Consignor" Type="nvarchar" MaxLength="255" />
+          <Property Name="ConsigneeTGNL" Type="int" />
+          <Property Name="ConsigneeOKPO" Type="int" />
+          <Property Name="Consignee" Type="nvarchar" MaxLength="255" />
+          <Property Name="DepSt" Type="int" />
+          <Property Name="DestSt" Type="int" />
+          <Property Name="PortOKPO" Type="int" />
+          <Property Name="ETCNG_ID" Type="int" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="CarOwnType_ID" Type="int" />
+          <Property Name="CarOwnerOKPO" Type="int" />
+          <Property Name="CarOwner" Type="nvarchar" MaxLength="255" />
+          <Property Name="DepStELS" Type="decimal" />
+          <Property Name="DepTarif" Type="float" />
+          <Property Name="DepNds" Type="float" />
+          <Property Name="DestStELS" Type="decimal" />
+          <Property Name="DestTarif" Type="float" />
+          <Property Name="DestNds" Type="float" />
+          <Property Name="BillCreateDate" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="Editor" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_BillCar">
+          <Key>
+            <PropertyRef Name="BillCar_ID" />
+          </Key>
+          <Property Name="BillCar_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Bill_ID" Type="int" />
+          <Property Name="CarNum" Type="int" />
+          <Property Name="CarType_ID" Type="int" />
+          <Property Name="CarWeight" Type="int" />
+          <Property Name="CarOwnType_ID" Type="int" />
+          <Property Name="CarOwnerOKPO" Type="int" />
+          <Property Name="CarOwner" Type="nvarchar" MaxLength="255" />
+          <Property Name="CarSupplier" Type="int" />
+          <Property Name="Contract_ID" Type="int" />
+          <Property Name="Customer" Type="int" />
+          <Property Name="BranchLine_ID" Type="int" />
+          <Property Name="Seller" Type="int" />
+          <Property Name="OderCar_ID" Type="int" />
+          <Property Name="Resale" Type="bit" />
+          <Property Name="Buyer" Type="int" />
+          <Property Name="Choice" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="Editor" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_ConfRef">
+          <Key>
+            <PropertyRef Name="ConfRef_ID" />
+          </Key>
+          <Property Name="ConfRef_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SrcTable" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="SrcField" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="DstTable" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="DstField" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="ParentTable" Type="nvarchar" MaxLength="150" />
+          <Property Name="IdField" Type="bit" Nullable="false" />
+          <Property Name="UpdateField" Type="bit" Nullable="false" />
+          <Property Name="ActualField" Type="tinyint" />
+          <Property Name="CostName2_ID" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+      предупреждение 6002: В таблице или представлении "ExportEtran.dbo.vw_ConfRef" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
+        <EntityType Name="vw_ConfRef">
+          <Key>
+            <PropertyRef Name="ConfRef_ID" />
+          </Key>
+          <Property Name="ConfRef_ID" Type="int" Nullable="false" />
+          <Property Name="SrcTable" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="SrcField" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="DstTable" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="DstField" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="ParentTable" Type="nvarchar" MaxLength="150" />
+          <Property Name="IdField" Type="bit" Nullable="false" />
+          <Property Name="UpdateField" Type="bit" Nullable="false" />
+          <Property Name="ActualField" Type="tinyint" />
+          <Property Name="CostName2_ID" Type="int" />
+          <Property Name="CostName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_tbl_BillCar_tbl_Bill">
+          <End Role="tbl_Bill" Type="ExportEtranModel.Store.tbl_Bill" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_BillCar" Type="ExportEtranModel.Store.tbl_BillCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bill">
+              <PropertyRef Name="Bill_ID" />
+            </Principal>
+            <Dependent Role="tbl_BillCar">
+              <PropertyRef Name="Bill_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExportEtranModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ExportEtranEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Bill" EntityType="ExportEtranModel.tbl_Bill" />
+          <EntitySet Name="tbl_BillCar" EntityType="ExportEtranModel.tbl_BillCar" />
+          <EntitySet Name="tbl_ConfRef" EntityType="ExportEtranModel.tbl_ConfRef" />
+          <AssociationSet Name="FK_tbl_Bill_tbl_BillCar" Association="ExportEtranModel.FK_tbl_Bill_tbl_BillCar">
+            <End Role="tbl_BillCar" EntitySet="tbl_BillCar" />
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BillCar_tbl_Bill" Association="ExportEtranModel.FK_tbl_BillCar_tbl_Bill">
+            <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+            <End Role="tbl_BillCar" EntitySet="tbl_BillCar" />
+          </AssociationSet>
+          <EntitySet Name="vw_ConfRef" EntityType="ExportEtranModel.vw_ConfRef" />
+        </EntityContainer>
+        <EntityType Name="tbl_Bill">
+          <Key>
+            <PropertyRef Name="Bill_ID" />
+          </Key>
+          <Property Name="Bill_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EtranBillID" Type="Int32" />
+          <Property Name="CarQtty" Type="Int32" />
+          <Property Name="BillNum" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="BillState" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="TakeOverDate" Type="DateTime" />
+          <Property Name="OpenDate" Type="DateTime" />
+          <Property Name="ArrivDate" Type="DateTime" />
+          <Property Name="RaskrDate" Type="DateTime" />
+          <Property Name="DeliveryDate" Type="DateTime" />
+          <Property Name="RgdOderNum" Type="Int32" />
+          <Property Name="EtranOderID" Type="Int32" />
+          <Property Name="ConsignorTGNL" Type="Int32" />
+          <Property Name="ConsignorOKPO" Type="Int32" />
+          <Property Name="Consignor" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ConsigneeTGNL" Type="Int32" />
+          <Property Name="ConsigneeOKPO" Type="Int32" />
+          <Property Name="Consignee" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DepSt" Type="Int32" />
+          <Property Name="DestSt" Type="Int32" />
+          <Property Name="PortOKPO" Type="Int32" />
+          <Property Name="ETCNG_ID" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="CarOwnType_ID" Type="Int32" />
+          <Property Name="CarOwnerOKPO" Type="Int32" />
+          <Property Name="CarOwner" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DepStELS" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DepTarif" Type="Double" />
+          <Property Name="DepNds" Type="Double" />
+          <Property Name="DestStELS" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DestTarif" Type="Double" />
+          <Property Name="DestNds" Type="Double" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="Creator" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EditDate" Type="DateTime" />
+          <Property Name="Editor" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_BillCar" Relationship="ExportEtranModel.FK_tbl_Bill_tbl_BillCar" FromRole="tbl_Bill" ToRole="tbl_BillCar" />
+          <NavigationProperty Name="tbl_BillCar_1" Relationship="ExportEtranModel.FK_tbl_BillCar_tbl_Bill" FromRole="tbl_Bill" ToRole="tbl_BillCar" />
+          <Property Type="DateTime" Name="BillCreateDate" />
+        </EntityType>
+        <EntityType Name="tbl_BillCar">
+          <Key>
+            <PropertyRef Name="BillCar_ID" />
+          </Key>
+          <Property Name="BillCar_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bill_ID" Type="Int32" />
+          <Property Name="CarNum" Type="Int32" />
+          <Property Name="CarType_ID" Type="Int32" />
+          <Property Name="CarWeight" Type="Int32" />
+          <Property Name="CarOwnType_ID" Type="Int32" />
+          <Property Name="CarOwnerOKPO" Type="Int32" />
+          <Property Name="CarOwner" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="CarSupplier" Type="Int32" />
+          <Property Name="Contract_ID" Type="Int32" />
+          <Property Name="Customer" Type="Int32" />
+          <Property Name="BranchLine_ID" Type="Int32" />
+          <Property Name="Seller" Type="Int32" />
+          <Property Name="OderCar_ID" Type="Int32" />
+          <Property Name="Resale" Type="Boolean" />
+          <Property Name="Buyer" Type="Int32" />
+          <Property Name="Choice" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="Creator" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EditDate" Type="DateTime" />
+          <Property Name="Editor" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_Bill" Relationship="ExportEtranModel.FK_tbl_Bill_tbl_BillCar" FromRole="tbl_BillCar" ToRole="tbl_Bill" />
+          <NavigationProperty Name="tbl_Bill_1" Relationship="ExportEtranModel.FK_tbl_BillCar_tbl_Bill" FromRole="tbl_BillCar" ToRole="tbl_Bill" />
+        </EntityType>
+        <EntityType Name="tbl_ConfRef">
+          <Key>
+            <PropertyRef Name="ConfRef_ID" />
+          </Key>
+          <Property Name="ConfRef_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SrcTable" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="SrcField" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="DstTable" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="DstField" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Type="Boolean" Name="IdField" Nullable="false" />
+          <Property Type="Boolean" Name="UpdateField" Nullable="false" />
+          <Property Type="String" Name="ParentTable" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="ActualField" />
+          <Property Type="Int32" Name="CostName2_ID" />
+        </EntityType>
+        <Association Name="FK_tbl_Bill_tbl_BillCar">
+          <End Type="ExportEtranModel.tbl_BillCar" Role="tbl_BillCar" Multiplicity="0..1" />
+          <End Type="ExportEtranModel.tbl_Bill" Role="tbl_Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_BillCar">
+              <PropertyRef Name="BillCar_ID" />
+            </Principal>
+            <Dependent Role="tbl_Bill">
+              <PropertyRef Name="EtranBillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BillCar_tbl_Bill">
+          <End Type="ExportEtranModel.tbl_Bill" Role="tbl_Bill" Multiplicity="0..1" />
+          <End Type="ExportEtranModel.tbl_BillCar" Role="tbl_BillCar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bill">
+              <PropertyRef Name="Bill_ID" />
+            </Principal>
+            <Dependent Role="tbl_BillCar">
+              <PropertyRef Name="Bill_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ComplexType1">
+          <Property Type="String" Name="cost" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="vw_ConfRef">
+          <Key>
+            <PropertyRef Name="ConfRef_ID" />
+          </Key>
+          <Property Type="Int32" Name="ConfRef_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SrcTable" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SrcField" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DstTable" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DstField" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParentTable" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IdField" Nullable="false" />
+          <Property Type="Boolean" Name="UpdateField" Nullable="false" />
+          <Property Type="Byte" Name="ActualField" />
+          <Property Type="Int32" Name="CostName2_ID" />
+          <Property Type="String" Name="CostName" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExportEtranModelStoreContainer" CdmEntityContainer="ExportEtranEntities">
+          <EntitySetMapping Name="tbl_Bill"><EntityTypeMapping TypeName="ExportEtranModel.tbl_Bill"><MappingFragment StoreEntitySet="tbl_Bill">
+            <ScalarProperty Name="BillCreateDate" ColumnName="BillCreateDate" />
+                <ScalarProperty Name="Bill_ID" ColumnName="Bill_ID" />
+            <ScalarProperty Name="EtranBillID" ColumnName="EtranBillID" />
+            <ScalarProperty Name="CarQtty" ColumnName="CarQtty" />
+            <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+            <ScalarProperty Name="BillState" ColumnName="BillState" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="TakeOverDate" ColumnName="TakeOverDate" />
+            <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+            <ScalarProperty Name="ArrivDate" ColumnName="ArrivDate" />
+            <ScalarProperty Name="RaskrDate" ColumnName="RaskrDate" />
+            <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+            <ScalarProperty Name="RgdOderNum" ColumnName="RgdOderNum" />
+            <ScalarProperty Name="EtranOderID" ColumnName="EtranOderID" />
+            <ScalarProperty Name="ConsignorTGNL" ColumnName="ConsignorTGNL" />
+            <ScalarProperty Name="ConsignorOKPO" ColumnName="ConsignorOKPO" />
+            <ScalarProperty Name="Consignor" ColumnName="Consignor" />
+            <ScalarProperty Name="ConsigneeTGNL" ColumnName="ConsigneeTGNL" />
+            <ScalarProperty Name="ConsigneeOKPO" ColumnName="ConsigneeOKPO" />
+            <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+            <ScalarProperty Name="DepSt" ColumnName="DepSt" />
+            <ScalarProperty Name="DestSt" ColumnName="DestSt" />
+            <ScalarProperty Name="PortOKPO" ColumnName="PortOKPO" />
+            <ScalarProperty Name="ETCNG_ID" ColumnName="ETCNG_ID" />
+            <ScalarProperty Name="Weight" ColumnName="Weight" />
+            <ScalarProperty Name="CarOwnType_ID" ColumnName="CarOwnType_ID" />
+            <ScalarProperty Name="CarOwnerOKPO" ColumnName="CarOwnerOKPO" />
+            <ScalarProperty Name="CarOwner" ColumnName="CarOwner" />
+            <ScalarProperty Name="DepStELS" ColumnName="DepStELS" />
+            <ScalarProperty Name="DepTarif" ColumnName="DepTarif" />
+            <ScalarProperty Name="DepNds" ColumnName="DepNds" />
+            <ScalarProperty Name="DestStELS" ColumnName="DestStELS" />
+            <ScalarProperty Name="DestTarif" ColumnName="DestTarif" />
+            <ScalarProperty Name="DestNds" ColumnName="DestNds" />
+            <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+            <ScalarProperty Name="Creator" ColumnName="Creator" />
+            <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+            <ScalarProperty Name="Editor" ColumnName="Editor" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_BillCar"><EntityTypeMapping TypeName="ExportEtranModel.tbl_BillCar"><MappingFragment StoreEntitySet="tbl_BillCar">
+            <ScalarProperty Name="BillCar_ID" ColumnName="BillCar_ID" />
+            <ScalarProperty Name="Bill_ID" ColumnName="Bill_ID" />
+            <ScalarProperty Name="CarNum" ColumnName="CarNum" />
+            <ScalarProperty Name="CarType_ID" ColumnName="CarType_ID" />
+            <ScalarProperty Name="CarWeight" ColumnName="CarWeight" />
+            <ScalarProperty Name="CarOwnType_ID" ColumnName="CarOwnType_ID" />
+            <ScalarProperty Name="CarOwnerOKPO" ColumnName="CarOwnerOKPO" />
+            <ScalarProperty Name="CarOwner" ColumnName="CarOwner" />
+            <ScalarProperty Name="CarSupplier" ColumnName="CarSupplier" />
+            <ScalarProperty Name="Contract_ID" ColumnName="Contract_ID" />
+            <ScalarProperty Name="Customer" ColumnName="Customer" />
+            <ScalarProperty Name="BranchLine_ID" ColumnName="BranchLine_ID" />
+            <ScalarProperty Name="Seller" ColumnName="Seller" />
+            <ScalarProperty Name="OderCar_ID" ColumnName="OderCar_ID" />
+            <ScalarProperty Name="Resale" ColumnName="Resale" />
+            <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+            <ScalarProperty Name="Choice" ColumnName="Choice" />
+            <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+            <ScalarProperty Name="Creator" ColumnName="Creator" />
+            <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+            <ScalarProperty Name="Editor" ColumnName="Editor" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_ConfRef"><EntityTypeMapping TypeName="ExportEtranModel.tbl_ConfRef"><MappingFragment StoreEntitySet="tbl_ConfRef">
+            <ScalarProperty Name="CostName2_ID" ColumnName="CostName2_ID" />
+                <ScalarProperty Name="ActualField" ColumnName="ActualField" />
+                <ScalarProperty Name="ParentTable" ColumnName="ParentTable" />
+                <ScalarProperty Name="UpdateField" ColumnName="UpdateField" />
+                <ScalarProperty Name="IdField" ColumnName="IdField" />
+                <ScalarProperty Name="ConfRef_ID" ColumnName="ConfRef_ID" />
+            <ScalarProperty Name="SrcTable" ColumnName="SrcTable" />
+            <ScalarProperty Name="SrcField" ColumnName="SrcField" />
+            <ScalarProperty Name="DstTable" ColumnName="DstTable" />
+            <ScalarProperty Name="DstField" ColumnName="DstField" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="vw_ConfRef">
+            <EntityTypeMapping TypeName="ExportEtranModel.vw_ConfRef">
+              <MappingFragment StoreEntitySet="vw_ConfRef">
+                <ScalarProperty Name="CostName" ColumnName="CostName" />
+                <ScalarProperty Name="CostName2_ID" ColumnName="CostName2_ID" />
+                <ScalarProperty Name="ActualField" ColumnName="ActualField" />
+                <ScalarProperty Name="UpdateField" ColumnName="UpdateField" />
+                <ScalarProperty Name="IdField" ColumnName="IdField" />
+                <ScalarProperty Name="ParentTable" ColumnName="ParentTable" />
+                <ScalarProperty Name="DstField" ColumnName="DstField" />
+                <ScalarProperty Name="DstTable" ColumnName="DstTable" />
+                <ScalarProperty Name="SrcField" ColumnName="SrcField" />
+                <ScalarProperty Name="SrcTable" ColumnName="SrcTable" />
+                <ScalarProperty Name="ConfRef_ID" ColumnName="ConfRef_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1" ZoomLevel="76" ShowGrid="false">
+        <EntityTypeShape EntityType="ExportEtranModel.tbl_Bill" Width="1.5" PointX="0.75" PointY="0.75" Height="8.1339322916666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExportEtranModel.tbl_BillCar" Width="1.5" PointX="2.75" PointY="0.75" Height="5.057109375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExportEtranModel.tbl_ConfRef" Width="1.5" PointX="4.75" PointY="0.75" Height="2.5571907552083331" IsExpanded="true" />
+        <AssociationConnector Association="ExportEtranModel.FK_tbl_Bill_tbl_BillCar" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2.75" PointY="1.7533371391918806" />
+          <ConnectorPoint PointX="2.5" PointY="1.7533371391918806" />
+          <ConnectorPoint PointX="2.5" PointY="1.5141435399518617" />
+          <ConnectorPoint PointX="2.25" PointY="1.5141435399518617" />
+        </AssociationConnector>
+        <AssociationConnector Association="ExportEtranModel.FK_tbl_BillCar_tbl_Bill" >
+          <ConnectorPoint PointX="2.25" PointY="4.0350246893876065" />
+          <ConnectorPoint PointX="2.75" PointY="4.0350246893876065" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ExportEtranModel.vw_ConfRef" Width="1.5" PointX="6.375" PointY="0.75" Height="3.1340950520833335" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

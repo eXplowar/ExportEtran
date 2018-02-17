@@ -1,0 +1,78 @@
+﻿<Window x:Class="ExportEtran.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Настройки" Height="275" Width="468" Loaded="Window_Loaded" Icon="/ExportEtran;component/doc_export.ico" Topmost="True">
+    <Grid>
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="58,12,0,0" Name="cboWcfServerList" VerticalAlignment="Top" Width="376" SelectionChanged="cboWcfServerList_SelectionChanged" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBlock1" Text="Сервер" VerticalAlignment="Top" Padding="0,3,0,0" />
+        <Expander Header="Добавить сервер" Margin="11,41,0,0" Height="183" VerticalAlignment="Top" HorizontalAlignment="Left" Width="424">
+            <Grid Name="gridAddClientServer">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="136*" />
+                    <ColumnDefinition Width="257*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,6,0,0" Name="textBlockAddress" Text="Address" VerticalAlignment="Top" Padding="0,3,0,0">
+                <TextBlock.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Адрес сервера</TextBlock>
+                            <TextBlock MaxWidth="600" TextWrapping="Wrap" xml:space="preserve">Обязательный строковый атрибут.
+Задает адрес конечной точки. Значение по умолчанию — пустая строка. Адрес должен быть абсолютным универсальным кодом ресурса (URI).</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,29,0,0" Name="textBlockBinding" Text="Binding" VerticalAlignment="Top" Padding="0,3,0,0">
+                <TextBlock.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Тип привязки</TextBlock>
+                            <TextBlock MaxWidth="600" TextWrapping="Wrap" xml:space="preserve">Обязательный строковый атрибут.
+Строка, указывающая тип привязки для использования. Для того чтобы на тип можно было ссылаться, он должен иметь зарегистрированный раздел конфигурации. Тип регистрируется по имени раздела, а не по имени типа привязки.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,52,0,0" Name="textBlockBindingConfiguration" Text="BindingConfiguration" VerticalAlignment="Top" Padding="0,3,0,0">
+                <TextBlock.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Имя конфигурации привязки</TextBlock>
+                            <TextBlock MaxWidth="600" TextWrapping="Wrap" xml:space="preserve">Необязательный. Строка, содержащая имя конфигурации привязки для использования при создании экземпляра конечной точки. Конфигурация привязки должна входить в область действия в точке определения конечной точки. Значение по умолчанию — пустая строка.
+Этот атрибут используется вместе с атрибутом binding для ссылки на конкретную конфигурацию привязки в файле конфигурации. Задайте этот атрибут, если выполняется попытка использовать пользовательскую привязку. В противном случае может быть создано исключение.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,75,0,0" Name="textBlockContract" Text="Contract" VerticalAlignment="Top" Padding="0,3,0,0">
+                <TextBlock.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Контракт</TextBlock>
+                            <TextBlock MaxWidth="600" TextWrapping="Wrap" xml:space="preserve">Обязательный строковый атрибут.
+Строка, указывающая, к какому контракту предоставляется доступ этой конечной точкой. В сборке должен быть реализован данный тип контракта.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,98,0,0" Name="textBlockName" Text="Name" VerticalAlignment="Top" Padding="0,3,0,0">
+                <TextBlock.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Имя конечной точки</TextBlock>
+                            <TextBlock MaxWidth="600" TextWrapping="Wrap" xml:space="preserve">Необязательный строковый атрибут. Этот атрибут уникальным образом идентифицирует конечную точку для данного контракта. Для данного типа контракта можно определить несколько клиентов. Определения должны отличаться друг от друга уникальным именем конфигурации. Если этот атрибут опущен, соответствующая конечная точка используется как конечная точка по умолчанию, связанная с заданным типом контракта. Значение по умолчанию — пустая строка.
+Атрибут name привязки используется для экспорта определения посредством языка WSDL.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="0,6,0,0" Name="textBoxAddress" VerticalAlignment="Top" Width="260" Grid.Column="1" Text="http://localhost:22222/ParsingService.svc" ToolTip="{Binding ElementName=textBlockAddress, Path=ToolTip}" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="0,29,0,0" Name="textBoxBinding" VerticalAlignment="Top" Width="260" Grid.Column="1" Text="basicHttpBinding" ToolTip="{Binding ElementName=textBlockBinding, Path=ToolTip}" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="0,52,0,0" Name="textBoxBindingConfiguration" VerticalAlignment="Top" Width="260" Grid.Column="1" Text="BasicHttpBinding_IParsingService" ToolTip="{Binding ElementName=textBlockBindingConfiguration, Path=ToolTip}" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="0,75,0,0" Name="textBoxContract" VerticalAlignment="Top" Width="260" Grid.Column="1" Text="EtranParsingServiceReference.IParsingService" ToolTip="{Binding ElementName=textBlockContract, Path=ToolTip}" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="0,98,0,0" Name="textBoxName" VerticalAlignment="Top" Width="260" Grid.Column="1" Text="MyBinding" ToolTip="{Binding ElementName=textBlockName, Path=ToolTip}" />
+                <Button Content="Добавить" Height="23" Margin="185,127,0,0" Name="btnAddEndpoint" VerticalAlignment="Top" Click="btnAddEndpoint_Click" Grid.Column="1" HorizontalAlignment="Left" Width="75" />
+            </Grid>
+        </Expander>
+    </Grid>
+</Window>

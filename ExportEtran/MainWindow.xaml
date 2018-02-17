@@ -1,0 +1,264 @@
+﻿<Window x:Class="ExportEtran.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" xmlns:t="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:ExportEtran"
+        Title="ETRAN" Name="mainWindow" Height="587" Width="1603" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:my="clr-namespace:ExportEtran" Loaded="Window_Loaded" Icon="/ExportEtran;component/doc_export.ico">
+    <Window.Resources>
+        <CollectionViewSource x:Key="tbl_ConfRefViewSource" d:DesignSource="{d:DesignInstance my:vw_ConfRef, CreateList=True}" />
+        <local:MyList x:Key="MyList" />
+        <local:SrcFieldList x:Key="SrcFieldList" />
+        <local:DstTableList x:Key="DstTableList" />
+        <local:CostDic x:Key="CostDic" />
+        <!--<local:ExportEtranEntities x:Key="exportEtranEntities" />
+        <CollectionViewSource x:Key="bookViewSource" Source="{Binding Path=tbl_CostName2, Source={StaticResource costDic}}" />-->
+        <!--<local:DstFieldList x:Key="DstFieldList" />-->
+        <local:TestFieldList x:Key="TestFieldList" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource tbl_ConfRefViewSource}">
+        <Menu IsMainMenu="True">
+            <MenuItem Header="_Файл">
+                <MenuItem Name="MenuItemExit" Header="_Выход" Click="MenuItemExit_Click" />
+            </MenuItem>
+            <MenuItem Header="_Правка" Visibility="Collapsed" />
+            <MenuItem Header="_Вид" Visibility="Collapsed" />
+            <MenuItem Header="_Сервис">
+                <MenuItem Header="_Настройки" Name="MenuItemOpenSettings" Click="MenuItemOpenSettings_Click" />
+            </MenuItem>
+            <MenuItem Header="_Окно" Visibility="Collapsed" />
+            <MenuItem Header="_Справка">
+                <MenuItem Header="_О программе" Name="MenuItemAbout" Click="MenuItemAbout_Click" />
+            </MenuItem>
+        </Menu>
+        <TabControl Margin="0,23,0,23" Name="tabControlMain">
+            <TabItem Header="Импорт документов из ЭТРАНа" Name="tabItemImportDoc">
+                <Grid>
+                    <TabControl Margin="6,35,6,6" Name="tabControl1">
+                        <TabItem Header="ЖД накладная" Name="tabBill">
+                            <Grid>
+                                <Button Content="Экспортировать накладные" Height="23" Margin="6,6,0,0" Name="btnExportBill" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Click="btnExportBill_Click" />
+                                <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="6,35,0,0" Name="textBlockCarNumLog" Text="Лог: " VerticalAlignment="Top" Width="1290" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" MaxHeight="43" />
+                                <Grid Margin="0,57,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="141*" />
+                                        <RowDefinition Height="129*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Height="18" HorizontalAlignment="Left" Margin="6,6,0,0" Name="textBlockBill" Text="tbl_Bill:" VerticalAlignment="Top" />
+                                    <DataGrid AlternatingRowBackground="#01FFFFFF" AutoGenerateColumns="True" Name="dataGridBillLog" Margin="6,30,6,0" Canvas.Left="0" Canvas.Top="0" />
+                                    <GridSplitter Name="gridSplitterBill" ResizeDirection="Rows" Height="5" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Stretch" />
+                                    <TextBlock Height="18" HorizontalAlignment="Left" Margin="6,6,0,0" Name="textBlockBillCar" Text="tbl_CarNum:" VerticalAlignment="Top" Grid.Row="1" />
+                                    <DataGrid AlternatingRowBackground="#01FFFFFF" AutoGenerateColumns="True" Margin="6,30,6,6" Name="dataGridBillCarLog" Grid.Row="1" Canvas.Left="0" Canvas.Top="0" />
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="ВПУ" Name="tabVPU">
+                            <Grid>
+                                <Button Content="Экспортировать ВПУ" Height="23" Margin="6,6,0,0" Name="btnExportVPU" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Click="btnExportVPU_Click" />
+                                <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="6,35,0,0" Name="textBlockVpuLog" Text="Лог: " VerticalAlignment="Top" Width="1290" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" MaxHeight="43" />
+                                <Grid Margin="0,57,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="141*" />
+                                        <RowDefinition Height="129*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Height="18" HorizontalAlignment="Left" Margin="6,6,0,0" Name="textBlockRgd" Text="tbl_DocPU_RGD:" VerticalAlignment="Top" />
+                                    <DataGrid AlternatingRowBackground="#01FFFFFF" AutoGenerateColumns="True" Name="dataGridRgdLog" Margin="6,30,6,0" Canvas.Left="0" Canvas.Top="0" />
+                                    <GridSplitter Name="gridSplitterRgd" ResizeDirection="Rows" Height="5" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Stretch" />
+                                    <TextBlock Height="18" HorizontalAlignment="Left" Margin="6,6,0,0" Name="textBlockRgdExpense" Text="tbl_DocPU_RGDExpense:" VerticalAlignment="Top" Grid.Row="1" />
+                                    <DataGrid AlternatingRowBackground="#01FFFFFF" AutoGenerateColumns="True" Margin="6,30,6,6" Name="dataGridRgdExpenseLog" Grid.Row="1" Canvas.Left="0" Canvas.Top="0" />
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Накопительная карточка" Name="tabNK">
+                            <Grid>
+                                <Button Content="Экспортировать НК" Height="23" Margin="6,6,0,0" Name="btnExportNK" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Click="btnExportNK_Click" />
+                                <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="6,35,0,0" Name="textBlockNkLog" Text="Лог: " VerticalAlignment="Top" Width="1290" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" MaxHeight="43" />
+                                <DataGrid AutoGenerateColumns="True" Margin="6,69,6,6" Name="dataGridNkLog" AlternatingRowBackground="#01FFFFFF" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Заявка" Name="tabZ">
+                            <Grid>
+                                <Button Content="Экспортировать заявки" Height="23" Margin="6,6,0,0" Name="btnExportZ" VerticalAlignment="Top" HorizontalAlignment="Left" Width="160" Click="btnExportZ_Click" />
+                                <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="6,35,0,0" Name="textBlockZayavkaLog" Text="Лог: " VerticalAlignment="Top" Width="1290" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" MaxHeight="43" />
+                                <DataGrid AutoGenerateColumns="True" Margin="6,69,6,6" Name="dataGridZayavkaLog" AlternatingRowBackground="#01FFFFFF" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Дислокация вагонов из Excel" Name="tabItemDislocationExcel">
+                            <Grid>
+                                <Button Content="Экспортировать дислокацию вагонов из Excel" Height="23" Margin="6,6,0,0" Name="btnExportDislocationExcel" VerticalAlignment="Top" HorizontalAlignment="Left" Width="272" Click="btnExportDislocationExcel_Click" />
+                                <TextBlock Height="Auto" HorizontalAlignment="Left" Margin="6,35,0,0" Name="textBlockDislocationExcelLog" Text="Лог: " VerticalAlignment="Top" Width="1290" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" MaxHeight="43" />
+                                <DataGrid AutoGenerateColumns="True" Margin="6,69,6,6" Name="dataGridDislocationExcelLog" AlternatingRowBackground="#01FFFFFF" />
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="11,6,0,0" Name="txtSourceFile" VerticalAlignment="Top" Width="504" />
+                    <Button Content="Открыть" Height="23" HorizontalAlignment="Left" Margin="521,5,0,0" Name="btnOpenSourceFile" VerticalAlignment="Top" Width="75" Click="btnOpenSourceFile_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Настройки импорта" Name="tabItemSettings">
+                <Grid>
+                    <TabControl Margin="6,0,6,6" Name="tabControlSettings">
+                        <TabItem Header="Импорт документов из ЭТРАНа" Name="tabEtranSettings">
+                            <Grid>
+                                <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,6,0,0" Name="textBlockSrcTable" Text="Список таблиц источников" VerticalAlignment="Top" Width="154" />
+                                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="6,32,6,6" Name="tbl_ConfRefDataGrid" HorizontalGridLinesBrush="#3C000000" VerticalGridLinesBrush="#3C000000" Canvas.Left="0" Canvas.Top="0" MinRowHeight="25" AlternatingRowBackground="#01FFFFFF" SelectionChanged="tbl_ConfRefDataGrid_SelectionChanged" CurrentCellChanged="tbl_ConfRefDataGrid_CurrentCellChanged" EnableRowVirtualization="False">
+                                    <!--<DataGrid AutoGenerateColumns="False" Margin="6,32,6,6" Name="tbl_ConfRefDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalGridLinesBrush="#3C000000" VerticalGridLinesBrush="#3C000000" Canvas.Left="0" Canvas.Top="0" MinRowHeight="25" AlternatingRowBackground="#01FFFFFF" SelectionChanged="tbl_ConfRefDataGrid_SelectionChanged" CurrentCellChanged="tbl_ConfRefDataGrid_CurrentCellChanged" EnableRowVirtualization="False">-->
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn x:Name="srcTableColumn" Header="Таблица источник" Width="Auto">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding SrcTable}" VerticalAlignment="Center" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox x:Name="cboSrcTable" ItemsSource="{StaticResource DstTableList}" SelectedItem="{Binding SrcTable}" Text="{Binding SrcTable}" IsEditable="True" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn x:Name="srcFieldColumn" Header="Поле источник" Width="Auto">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding SrcField}" VerticalAlignment="Center" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <!--<ComboBox x:Name="cboSrcField" ItemsSource="{StaticResource SrcFieldList}" SelectedItem="{Binding SrcField}" Text="{Binding SrcField}" IsEditable="True" IsReadOnly="True" />-->
+                                                    <ComboBox x:Name="cboSrcField" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}, Path=SrcFields}" SelectedItem="{Binding SrcField}" Text="{Binding SrcField}" IsEditable="True" IsReadOnly="True" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn x:Name="dstTableColumn" Header="Таблица приемник" Width="Auto">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding DstTable}" VerticalAlignment="Center" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox x:Name="cboDstTable" ItemsSource="{StaticResource DstTableList}" SelectedItem="{Binding DstTable}" Text="{Binding DstTable}" IsEditable="True" IsReadOnly="True" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn x:Name="dstFieldColumn" Header="Поле приемник" Width="Auto">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding DstField}" VerticalAlignment="Center" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <!--<ComboBox x:Name="cboDstField" ItemsSource="{Binding ElementName=mainWindow, Path=DestFields, Mode=TwoWay}" SelectedItem="{Binding DstField}" Text="{Binding DstField}" IsEditable="True" IsReadOnly="True" GotFocus="cboDstField_GotFocus" />-->
+                                                    <ComboBox x:Name="cboDstField" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}, Path=DestFields}" SelectedItem="{Binding DstField}" Text="{Binding DstField}" IsEditable="True" IsReadOnly="True" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn x:Name="parentTableColumn" Header="Родительская таблица" Width="Auto">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding ParentTable}" VerticalAlignment="Center" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox x:Name="cboParentTable" ItemsSource="{StaticResource DstTableList}" SelectedItem="{Binding ParentTable}" Text="{Binding ParentTable}" IsEditable="True" />
+                                                    <!--<ComboBox x:Name="cboParentTable" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}, Path=DestFields}" SelectedItem="{Binding ParentTable}" Text="{Binding ParentTable}" IsEditable="True" IsReadOnly="True" />-->
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridCheckBoxColumn x:Name="idFieldColumn" Binding="{Binding Path=IdField}" Header="Ключ" Width="SizeToHeader">
+                                            <DataGridCheckBoxColumn.ElementStyle>
+                                                <Style TargetType="CheckBox">
+                                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridCheckBoxColumn.ElementStyle>
+                                        </DataGridCheckBoxColumn>
+                                        <DataGridCheckBoxColumn x:Name="updateFieldColumn" Binding="{Binding Path=UpdateField}" Header="Обновлять" Width="SizeToHeader">
+                                            <DataGridCheckBoxColumn.ElementStyle>
+                                                <Style TargetType="CheckBox">
+                                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridCheckBoxColumn.ElementStyle>
+                                        </DataGridCheckBoxColumn>
+                                        <DataGridTextColumn Header="Актуальность" Binding="{Binding Path=ActualField}" Width="SizeToHeader" >
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTemplateColumn x:Name="costTableColumn" Header="Вид затрат" Width="Auto" MinWidth="200">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <!--<ComboBox x:Name="cboCostName" ItemsSource="{Binding Source={StaticResource CostDic}}"
+                                                  DisplayMemberPath="Value"
+                                                  SelectedValuePath="Key"
+                                                  SelectedValue="{Binding Path=CostName2_ID}"
+                                                  IsEditable="True"
+                                                  BorderBrush="{x:Null}"
+                                                  Background="{x:Null}"
+                                                  SelectionChanged="cboCostName_SelectionChanged">
+                                        </ComboBox>-->
+                                                    <ComboBox x:Name="cboCostName" ItemsSource="{Binding Source={StaticResource CostDic}}"
+                                                  DisplayMemberPath="Value"
+                                                  SelectedValuePath="Key"
+                                                  SelectedValue="{Binding Path=CostName2_ID}"
+                                                  SelectionChanged="cboCostName_SelectionChanged" 
+                                                  Style="{StaticResource ComboBoxTransparentStyle}" 
+                                                  Height="23" IsEditable="True" Background="Transparent" BorderThickness="0">
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                        <DataGridTextColumn Binding="{Binding Path=CostName2_ID}" MinWidth="100" Visibility="Hidden" />
+                                        <DataGridTextColumn Binding="{Binding Path=DstField}" MinWidth="100" Visibility="Hidden" />
+
+                                        <DataGridTemplateColumn x:Name="tstColumn" Header="Test Field" Width="Auto" Visibility="Hidden">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox x:Name="cboTestColumn" ItemsSource="{Binding Source={x:Static local:TestFieldList.Instance}, Path=MyList2}" SelectedItem="{Binding DstField}" Text="{Binding DstField}" IsEditable="True" IsReadOnly="True" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,6,0,0" Name="cboSrcTableList" VerticalAlignment="Top" Width="229" SelectionChanged="cboSrcTableList_SelectionChanged" SelectedIndex="0" />
+                                <Button Content="Проверить конфигурационную таблицу на ошибки" Height="23" HorizontalAlignment="Left" Margin="402,6,0,0" Name="btnCheckConfTable" VerticalAlignment="Top" Width="292" Click="btnCheckConfTable_Click" />
+
+                                <TextBox Height="23" Margin="1514,0,0,444" Name="textBox1" VerticalAlignment="Bottom" Text="{Binding ElementName=mainWindow, Path=TextData}" HorizontalAlignment="Left" Width="48" Visibility="Hidden" />
+                                <Button Content="Изменить источник строк (DstField)" Height="23" HorizontalAlignment="Left" Name="button1" VerticalAlignment="Bottom" Width="205" Click="button1_Click" Visibility="Hidden" Margin="1032,0,0,445" />
+                                <Button Content="Добавить в выподающий список (TestFieldList)" Height="23" HorizontalAlignment="Left" Margin="1243,0,0,445" Name="button2" VerticalAlignment="Bottom" Width="265" Click="button2_Click" Visibility="Hidden" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Импорт дислокаций вагонов из Excel" Name="tabDislocationExcelSettings">
+                            <Grid />
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StatusBar Height="23" Name="statusBar1" VerticalAlignment="Bottom" >
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0">
+                <TextBlock Name="StatusBarItemLeft"> </TextBlock>
+            </StatusBarItem>
+            <Separator Width="1" Grid.Column="0" HorizontalAlignment="Right" Margin="0,4" />
+            <StatusBarItem Grid.Column="1">
+                <TextBlock Name="StatusBarItemRight">Время</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
