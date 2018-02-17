@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExportEtranModelStoreContainer" CdmEntityContainer="ExportEtranEntities">
+    <EntitySetMapping Name="tbl_Bill">
+      <EntityTypeMapping TypeName="ExportEtranModel.tbl_Bill">
+        <MappingFragment StoreEntitySet="tbl_Bill">
+          <ScalarProperty Name="BillCreateDate" ColumnName="BillCreateDate" />
+          <ScalarProperty Name="Bill_ID" ColumnName="Bill_ID" />
+          <ScalarProperty Name="EtranBillID" ColumnName="EtranBillID" />
+          <ScalarProperty Name="CarQtty" ColumnName="CarQtty" />
+          <ScalarProperty Name="BillNum" ColumnName="BillNum" />
+          <ScalarProperty Name="BillState" ColumnName="BillState" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TakeOverDate" ColumnName="TakeOverDate" />
+          <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+          <ScalarProperty Name="ArrivDate" ColumnName="ArrivDate" />
+          <ScalarProperty Name="RaskrDate" ColumnName="RaskrDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="RgdOderNum" ColumnName="RgdOderNum" />
+          <ScalarProperty Name="EtranOderID" ColumnName="EtranOderID" />
+          <ScalarProperty Name="ConsignorTGNL" ColumnName="ConsignorTGNL" />
+          <ScalarProperty Name="ConsignorOKPO" ColumnName="ConsignorOKPO" />
+          <ScalarProperty Name="Consignor" ColumnName="Consignor" />
+          <ScalarProperty Name="ConsigneeTGNL" ColumnName="ConsigneeTGNL" />
+          <ScalarProperty Name="ConsigneeOKPO" ColumnName="ConsigneeOKPO" />
+          <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+          <ScalarProperty Name="DepSt" ColumnName="DepSt" />
+          <ScalarProperty Name="DestSt" ColumnName="DestSt" />
+          <ScalarProperty Name="PortOKPO" ColumnName="PortOKPO" />
+          <ScalarProperty Name="ETCNG_ID" ColumnName="ETCNG_ID" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="CarOwnType_ID" ColumnName="CarOwnType_ID" />
+          <ScalarProperty Name="CarOwnerOKPO" ColumnName="CarOwnerOKPO" />
+          <ScalarProperty Name="CarOwner" ColumnName="CarOwner" />
+          <ScalarProperty Name="DepStELS" ColumnName="DepStELS" />
+          <ScalarProperty Name="DepTarif" ColumnName="DepTarif" />
+          <ScalarProperty Name="DepNds" ColumnName="DepNds" />
+          <ScalarProperty Name="DestStELS" ColumnName="DestStELS" />
+          <ScalarProperty Name="DestTarif" ColumnName="DestTarif" />
+          <ScalarProperty Name="DestNds" ColumnName="DestNds" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+          <ScalarProperty Name="Editor" ColumnName="Editor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BillCar">
+      <EntityTypeMapping TypeName="ExportEtranModel.tbl_BillCar">
+        <MappingFragment StoreEntitySet="tbl_BillCar">
+          <ScalarProperty Name="BillCar_ID" ColumnName="BillCar_ID" />
+          <ScalarProperty Name="Bill_ID" ColumnName="Bill_ID" />
+          <ScalarProperty Name="CarNum" ColumnName="CarNum" />
+          <ScalarProperty Name="CarType_ID" ColumnName="CarType_ID" />
+          <ScalarProperty Name="CarWeight" ColumnName="CarWeight" />
+          <ScalarProperty Name="CarOwnType_ID" ColumnName="CarOwnType_ID" />
+          <ScalarProperty Name="CarOwnerOKPO" ColumnName="CarOwnerOKPO" />
+          <ScalarProperty Name="CarOwner" ColumnName="CarOwner" />
+          <ScalarProperty Name="CarSupplier" ColumnName="CarSupplier" />
+          <ScalarProperty Name="Contract_ID" ColumnName="Contract_ID" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="BranchLine_ID" ColumnName="BranchLine_ID" />
+          <ScalarProperty Name="Seller" ColumnName="Seller" />
+          <ScalarProperty Name="OderCar_ID" ColumnName="OderCar_ID" />
+          <ScalarProperty Name="Resale" ColumnName="Resale" />
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+          <ScalarProperty Name="Choice" ColumnName="Choice" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+          <ScalarProperty Name="Editor" ColumnName="Editor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ConfRef">
+      <EntityTypeMapping TypeName="ExportEtranModel.tbl_ConfRef">
+        <MappingFragment StoreEntitySet="tbl_ConfRef">
+          <ScalarProperty Name="CostName2_ID" ColumnName="CostName2_ID" />
+          <ScalarProperty Name="ActualField" ColumnName="ActualField" />
+          <ScalarProperty Name="ParentTable" ColumnName="ParentTable" />
+          <ScalarProperty Name="UpdateField" ColumnName="UpdateField" />
+          <ScalarProperty Name="IdField" ColumnName="IdField" />
+          <ScalarProperty Name="ConfRef_ID" ColumnName="ConfRef_ID" />
+          <ScalarProperty Name="SrcTable" ColumnName="SrcTable" />
+          <ScalarProperty Name="SrcField" ColumnName="SrcField" />
+          <ScalarProperty Name="DstTable" ColumnName="DstTable" />
+          <ScalarProperty Name="DstField" ColumnName="DstField" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_ConfRef">
+      <EntityTypeMapping TypeName="ExportEtranModel.vw_ConfRef">
+        <MappingFragment StoreEntitySet="vw_ConfRef">
+          <ScalarProperty Name="CostName" ColumnName="CostName" />
+          <ScalarProperty Name="CostName2_ID" ColumnName="CostName2_ID" />
+          <ScalarProperty Name="ActualField" ColumnName="ActualField" />
+          <ScalarProperty Name="UpdateField" ColumnName="UpdateField" />
+          <ScalarProperty Name="IdField" ColumnName="IdField" />
+          <ScalarProperty Name="ParentTable" ColumnName="ParentTable" />
+          <ScalarProperty Name="DstField" ColumnName="DstField" />
+          <ScalarProperty Name="DstTable" ColumnName="DstTable" />
+          <ScalarProperty Name="SrcField" ColumnName="SrcField" />
+          <ScalarProperty Name="SrcTable" ColumnName="SrcTable" />
+          <ScalarProperty Name="ConfRef_ID" ColumnName="ConfRef_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

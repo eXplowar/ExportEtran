@@ -1,0 +1,39 @@
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\bin\Release\ExportEtran.exe.config
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\bin\Release\ExportEtran.exe
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\bin\Release\ExportEtran.pdb
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\ThemesAndStyles\ComboBoxTransparentStyle.baml
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\App.baml
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\MainWindow.g.cs
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\App.g.cs
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran_MarkupCompile.cache
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran_MarkupCompile.lref
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\MainWindow.baml
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.g.resources
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.Properties.Resources.resources
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.exe
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.pdb
+C:\WS\Job 2018\ExportEtran\ExportEtran\bin\Release\ExportEtran.exe.config
+C:\WS\Job 2018\ExportEtran\ExportEtran\bin\Release\ExportEtran.exe
+C:\WS\Job 2018\ExportEtran\ExportEtran\bin\Release\ExportEtran.pdb
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\LoginWindow.baml
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\Settings.baml
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ThemesAndStyles\ComboBoxTransparentStyle.baml
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\App.baml
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\LoginWindow.g.cs
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\MainWindow.g.cs
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\Settings.g.cs
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\App.g.cs
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\GeneratedInternalTypeHelper.g.cs
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran_MarkupCompile.cache
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran_MarkupCompile.lref
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\MainWindow.baml
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.g.resources
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.Properties.Resources.resources
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.csproj.GenerateResource.Cache
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.csproj.CoreCompileInputs.cache
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.exe
+C:\WS\Job 2018\ExportEtran\ExportEtran\obj\x86\Release\ExportEtran.pdb

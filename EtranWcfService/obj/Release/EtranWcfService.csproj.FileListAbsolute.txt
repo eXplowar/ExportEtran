@@ -1,0 +1,15 @@
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\EtranWcfService\bin\EtranWcfService.dll
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\EtranWcfService\bin\EtranWcfService.pdb
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\EtranWcfService\bin\ParsingLib.dll
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\EtranWcfService\bin\ParsingLib.pdb
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\EtranWcfService\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\EtranWcfService\obj\Release\EtranWcfService.dll
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\EtranWcfService\obj\Release\EtranWcfService.pdb
+C:\WS\Job 2018\ExportEtran\EtranWcfService\bin\EtranWcfService.dll
+C:\WS\Job 2018\ExportEtran\EtranWcfService\bin\EtranWcfService.pdb
+C:\WS\Job 2018\ExportEtran\EtranWcfService\bin\ParsingLib.dll
+C:\WS\Job 2018\ExportEtran\EtranWcfService\bin\ParsingLib.pdb
+C:\WS\Job 2018\ExportEtran\EtranWcfService\obj\Release\EtranWcfService.csprojResolveAssemblyReference.cache
+C:\WS\Job 2018\ExportEtran\EtranWcfService\obj\Release\EtranWcfService.csproj.CoreCompileInputs.cache
+C:\WS\Job 2018\ExportEtran\EtranWcfService\obj\Release\EtranWcfService.dll
+C:\WS\Job 2018\ExportEtran\EtranWcfService\obj\Release\EtranWcfService.pdb

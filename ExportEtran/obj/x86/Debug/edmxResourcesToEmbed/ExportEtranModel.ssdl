@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExportEtranModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ExportEtranModelStoreContainer">
+    <EntitySet Name="tbl_Bill" EntityType="ExportEtranModel.Store.tbl_Bill" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbl_BillCar" EntityType="ExportEtranModel.Store.tbl_BillCar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbl_ConfRef" EntityType="ExportEtranModel.Store.tbl_ConfRef" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="vw_ConfRef" EntityType="ExportEtranModel.Store.vw_ConfRef" store:Type="Views" store:Schema="dbo" store:Name="vw_ConfRef">
+      <DefiningQuery>SELECT 
+      [vw_ConfRef].[ConfRef_ID] AS [ConfRef_ID], 
+      [vw_ConfRef].[SrcTable] AS [SrcTable], 
+      [vw_ConfRef].[SrcField] AS [SrcField], 
+      [vw_ConfRef].[DstTable] AS [DstTable], 
+      [vw_ConfRef].[DstField] AS [DstField], 
+      [vw_ConfRef].[ParentTable] AS [ParentTable], 
+      [vw_ConfRef].[IdField] AS [IdField], 
+      [vw_ConfRef].[UpdateField] AS [UpdateField], 
+      [vw_ConfRef].[ActualField] AS [ActualField], 
+      [vw_ConfRef].[CostName2_ID] AS [CostName2_ID], 
+      [vw_ConfRef].[CostName] AS [CostName]
+      FROM [dbo].[vw_ConfRef] AS [vw_ConfRef]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tbl_BillCar_tbl_Bill" Association="ExportEtranModel.Store.FK_tbl_BillCar_tbl_Bill">
+      <End Role="tbl_Bill" EntitySet="tbl_Bill" />
+      <End Role="tbl_BillCar" EntitySet="tbl_BillCar" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbl_Bill">
+    <Key>
+      <PropertyRef Name="Bill_ID" />
+    </Key>
+    <Property Name="Bill_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EtranBillID" Type="int" />
+    <Property Name="CarQtty" Type="int" />
+    <Property Name="BillNum" Type="nvarchar" MaxLength="255" />
+    <Property Name="BillState" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="nvarchar" MaxLength="255" />
+    <Property Name="TakeOverDate" Type="datetime" />
+    <Property Name="OpenDate" Type="datetime" />
+    <Property Name="ArrivDate" Type="datetime" />
+    <Property Name="RaskrDate" Type="datetime" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="RgdOderNum" Type="int" />
+    <Property Name="EtranOderID" Type="int" />
+    <Property Name="ConsignorTGNL" Type="int" />
+    <Property Name="ConsignorOKPO" Type="int" />
+    <Property Name="Consignor" Type="nvarchar" MaxLength="255" />
+    <Property Name="ConsigneeTGNL" Type="int" />
+    <Property Name="ConsigneeOKPO" Type="int" />
+    <Property Name="Consignee" Type="nvarchar" MaxLength="255" />
+    <Property Name="DepSt" Type="int" />
+    <Property Name="DestSt" Type="int" />
+    <Property Name="PortOKPO" Type="int" />
+    <Property Name="ETCNG_ID" Type="int" />
+    <Property Name="Weight" Type="int" />
+    <Property Name="CarOwnType_ID" Type="int" />
+    <Property Name="CarOwnerOKPO" Type="int" />
+    <Property Name="CarOwner" Type="nvarchar" MaxLength="255" />
+    <Property Name="DepStELS" Type="decimal" />
+    <Property Name="DepTarif" Type="float" />
+    <Property Name="DepNds" Type="float" />
+    <Property Name="DestStELS" Type="decimal" />
+    <Property Name="DestTarif" Type="float" />
+    <Property Name="DestNds" Type="float" />
+    <Property Name="BillCreateDate" Type="datetime" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Creator" Type="nvarchar" MaxLength="50" />
+    <Property Name="EditDate" Type="datetime" />
+    <Property Name="Editor" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_BillCar">
+    <Key>
+      <PropertyRef Name="BillCar_ID" />
+    </Key>
+    <Property Name="BillCar_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Bill_ID" Type="int" />
+    <Property Name="CarNum" Type="int" />
+    <Property Name="CarType_ID" Type="int" />
+    <Property Name="CarWeight" Type="int" />
+    <Property Name="CarOwnType_ID" Type="int" />
+    <Property Name="CarOwnerOKPO" Type="int" />
+    <Property Name="CarOwner" Type="nvarchar" MaxLength="255" />
+    <Property Name="CarSupplier" Type="int" />
+    <Property Name="Contract_ID" Type="int" />
+    <Property Name="Customer" Type="int" />
+    <Property Name="BranchLine_ID" Type="int" />
+    <Property Name="Seller" Type="int" />
+    <Property Name="OderCar_ID" Type="int" />
+    <Property Name="Resale" Type="bit" />
+    <Property Name="Buyer" Type="int" />
+    <Property Name="Choice" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Creator" Type="nvarchar" MaxLength="50" />
+    <Property Name="EditDate" Type="datetime" />
+    <Property Name="Editor" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_ConfRef">
+    <Key>
+      <PropertyRef Name="ConfRef_ID" />
+    </Key>
+    <Property Name="ConfRef_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SrcTable" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="SrcField" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="DstTable" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="DstField" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="ParentTable" Type="nvarchar" MaxLength="150" />
+    <Property Name="IdField" Type="bit" Nullable="false" />
+    <Property Name="UpdateField" Type="bit" Nullable="false" />
+    <Property Name="ActualField" Type="tinyint" />
+    <Property Name="CostName2_ID" Type="int" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+      предупреждение 6002: В таблице или представлении "ExportEtran.dbo.vw_ConfRef" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
+  <EntityType Name="vw_ConfRef">
+    <Key>
+      <PropertyRef Name="ConfRef_ID" />
+    </Key>
+    <Property Name="ConfRef_ID" Type="int" Nullable="false" />
+    <Property Name="SrcTable" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="SrcField" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="DstTable" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="DstField" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="ParentTable" Type="nvarchar" MaxLength="150" />
+    <Property Name="IdField" Type="bit" Nullable="false" />
+    <Property Name="UpdateField" Type="bit" Nullable="false" />
+    <Property Name="ActualField" Type="tinyint" />
+    <Property Name="CostName2_ID" Type="int" />
+    <Property Name="CostName" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <Association Name="FK_tbl_BillCar_tbl_Bill">
+    <End Role="tbl_Bill" Type="ExportEtranModel.Store.tbl_Bill" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_BillCar" Type="ExportEtranModel.Store.tbl_BillCar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Bill">
+        <PropertyRef Name="Bill_ID" />
+      </Principal>
+      <Dependent Role="tbl_BillCar">
+        <PropertyRef Name="Bill_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,10 @@
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ParsingLib\bin\Release\ParsingLib.dll
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ParsingLib\bin\Release\ParsingLib.pdb
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ParsingLib\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ParsingLib\obj\Release\ParsingLib.dll
+C:\Users\Alexander\documents\visual studio 2010\Projects\ExportEtran\ParsingLib\obj\Release\ParsingLib.pdb
+C:\WS\Job 2018\ExportEtran\ParsingLib\bin\Release\ParsingLib.dll
+C:\WS\Job 2018\ExportEtran\ParsingLib\bin\Release\ParsingLib.pdb
+C:\WS\Job 2018\ExportEtran\ParsingLib\obj\Release\ParsingLib.csproj.CoreCompileInputs.cache
+C:\WS\Job 2018\ExportEtran\ParsingLib\obj\Release\ParsingLib.dll
+C:\WS\Job 2018\ExportEtran\ParsingLib\obj\Release\ParsingLib.pdb
